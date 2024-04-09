@@ -97,7 +97,7 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>JOMACS Releases Nexus Repository</name>
-	      <url>http://3.84.238.174:8081/repository/webapp-release/</url>
+	      <url>http://100.26.233.116:8081/repository/webstuff-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
