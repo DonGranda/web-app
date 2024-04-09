@@ -1,14 +1,14 @@
 pipeline{
   agent any
   tools{
-    maven "maven3.8.8"
+    maven "maven_3.9.6"
   }
 
     stages{
       stage("1. Git clone from repo"){
         steps{
          sh "echo start of git clone"
-         git branch: 'main', url: 'https://github.com/JOMACS-IT/web-app.git'
+         git branch: 'masta', url: 'https://github.com/DonGranda/web-app.git'
          sh "echo end of git clone"
         }
       }
@@ -39,14 +39,14 @@ pipeline{
       stage("5. Deploying to Tomcat in UAT"){
         steps{
            sh "echo start deploying to server in UAT Env"
-           deploy adapters: [tomcat9(credentialsId: 'tomcat_cred', path: '', url: 'http://18.117.162.68:9090')], contextPath: null, war: 'target/*.war'
+           deploy adapters: [tomcat9(credentialsId: 'tomcat_credentials', path: '', url: 'http://52.207.249.229:8080/')], contextPath: null, war: 'target/*.war'
         }  
       }
       
       stage("6. Email Notification"){
         steps{
             sh "echo Email Notification to DevOps Team"
-            emailext body: 'The Deployment is Successful', subject: 'Deployment Success', to: 'info@jomacsit.com'
+            emailext body: 'The Deployment is Successful', subject: 'Deployment Success', to: 'lesliekofiameg@gmail.com'
         }  
       }
     }
